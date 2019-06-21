@@ -63,7 +63,9 @@ spec:
 
 ## Features
 
-### Reconcile
+### Managed Resource Labels
+
+#### Reconcile
 
 `.spec.resources.metadata.labels[kapitan.razee.io/Reconcile]`
 
@@ -75,7 +77,7 @@ deleted.
   - This behavior can be overridden when a child's resource definition has
 the label `kapitan.razee.io/Reconcile=false`.
 
-### Resource Update Mode
+#### Resource Update Mode
 
 `.spec.resources.metadata.labels[kapitan.razee.io/mode]`
 
