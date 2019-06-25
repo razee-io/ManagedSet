@@ -4,7 +4,7 @@
 ![GitHub](https://img.shields.io/github/license/razee-io/ManagedSet.svg?color=success)
 
 ManagedSet is a resource used to group and enforce other resources. It is simple
-and doesn't anything past enforcing the defined resources.
+and doesn't do anything past enforcing the defined resources.
 
 ## Install
 
