@@ -4,6 +4,7 @@ metadata:
   name: managedset-controller-list
   annotations:
     version: "{{TRAVIS_COMMIT}}"
+type: array
 items:
   - apiVersion: apps/v1
     kind: Deployment
