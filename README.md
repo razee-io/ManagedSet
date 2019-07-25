@@ -1,6 +1,7 @@
 # ManagedSet
 
-[![Build Status](https://travis-ci.com/razee-io/ManagedSet.svg?branch=master)](https://travis-ci.com/razee-io/ManagedSet) [![Greenkeeper badge](https://badges.greenkeeper.io/razee-io/ManagedSet.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.com/razee-io/ManagedSet.svg?branch=master)](https://travis-ci.com/razee-io/ManagedSet)
+[![Greenkeeper badge](https://badges.greenkeeper.io/razee-io/ManagedSet.svg)](https://greenkeeper.io/)
 ![GitHub](https://img.shields.io/github/license/razee-io/ManagedSet.svg?color=success)
 
 ManagedSet is a resource used to group and enforce other resources. It is simple
