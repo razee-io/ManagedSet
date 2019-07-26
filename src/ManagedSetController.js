@@ -30,7 +30,11 @@ module.exports = class ManagedSetController extends CompositeController {
     for (var i = 0; i < resources.length; i++) {
       let rsp = await this.applyChild(resources[i]);
       if (!rsp.statusCode || rsp.statusCode < 200 || rsp.statusCode >= 300) {
-        return Promise.reject(`${resources[i].apiVersion}/${resources[i].kind} status ${JSON.stringify(rsp.body)}`);
+        this.log.error(rsp);
+        let kind = objectPath.get(rsp, 'body.details.kind') || objectPath.get(resources, [i, 'kind']);
+        let group = objectPath.get(rsp, 'body.details.group') || objectPath.get(resources, [i, 'apiVersion']);
+        let name = objectPath.get(rsp, 'body.details.name') || objectPath.get(resources, [i, 'metadata', 'name']);
+        return Promise.reject(`${kind}.${group} "${name}" status ${rsp.statusCode} ${objectPath.get(rsp, 'body.reason', '')}.. see logs for details`);
       }
     }
     await this.reconcileChildren();
