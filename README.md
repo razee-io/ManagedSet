@@ -106,3 +106,15 @@ Mode options:
 - `EnsureExists`
   - Will ensure the resource is created and is replaced if deleted. Will not
   enforce a definition.
+
+### Lock Cluster Updates
+
+Prevents the controller from updating resources on the cluster. If this is the
+first time creating the `kapitan-config` ConfigMap, you must delete the running
+controller pods so the deployment can mount the ConfigMap as a volume. If the
+`kapitan-config` ConfigMap already exists, just add the pair `lock-cluster: true`.
+
+1. `export CONTROLLER_NAME=managedset-controller && export CONTROLLER_NAMESPACE=razee`
+1. `kubectl create cm kapitan-config -n $CONTROLLER_NAMESPACE --from-literal=lock-cluster=true`
+1. `kubectl delete pods -n $CONTROLLER_NAMESPACE $(kubectl get pods -n $CONTROLLER_NAMESPACE
+ | grep $CONTROLLER_NAME | awk '{print $1}' | paste -s -d ',' -)`
