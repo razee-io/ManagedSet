@@ -10,7 +10,6 @@ items:
     kind: Deployment
     metadata:
       name: managedset-controller
-      namespace: razee
     spec:
       replicas: 1
       selector:
