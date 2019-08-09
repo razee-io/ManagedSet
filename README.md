@@ -118,7 +118,7 @@ This is useful for when you need to debug a live resource and dont want Kapitan
 overriding your changes. Note: this will only work when you add it to live resources.
 If you want to have the EnsureExist behavior, see [Resource Update Mode](#Resource-Update-Mode).
 
-`kubectl label rr rr-test kapitan.razee.io/debug=true`
+- ie: `kubectl label ms <your-ms> kapitan.razee.io/debug=true`
 
 ### Lock Cluster Updates
 
