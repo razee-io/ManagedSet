@@ -107,6 +107,19 @@ Mode options:
   - Will ensure the resource is created and is replaced if deleted. Will not
   enforce a definition.
 
+### Debug Individual Resource
+
+`.spec.resources.metadata.labels[kapitan.razee.io/debug]`
+
+Treats the live resource as EnsureExist. If any Kapitan component is enforcing
+the resource, and the label `kapitan.razee.io/debug: true` exists on the live
+resource, it will treat the resource as ensure exist and not override any changes.
+This is useful for when you need to debug a live resource and dont want Kapitan
+overriding your changes. Note: this will only work when you add it to live resources.
+If you want to have the EnsureExist behavior, see [Resource Update Mode](#Resource-Update-Mode).
+
+`kubectl label rr rr-test kapitan.razee.io/debug=true`
+
 ### Lock Cluster Updates
 
 Prevents the controller from updating resources on the cluster. If this is the
