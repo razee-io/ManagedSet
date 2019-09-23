@@ -16,12 +16,12 @@
 
 const objectPath = require('object-path');
 
-const { CompositeController } = require('@razee/kapitan-core');
+const { CompositeController } = require('@razee/razeedeploy-core');
 
 
 module.exports = class ManagedSetController extends CompositeController {
   constructor(params) {
-    params.finalizerString = params.finalizerString || 'children.managedsets.kapitan.razee.io';
+    params.finalizerString = params.finalizerString || 'children.managedsets.deploy.razee.io';
     super(params);
   }
 

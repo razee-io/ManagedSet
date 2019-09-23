@@ -19,7 +19,7 @@ kubectl apply -f "https://github.com/razee-io/ManagedSet/releases/latest/downloa
 
 ```yaml
 kind: ManagedSet
-apiVersion: kapitan.razee.io/v1alpha1
+apiVersion: deploy.razee.io/v1alpha1
 metadata:
   name: <managed_set_name>
   namespace: <namespace>
@@ -68,23 +68,23 @@ spec:
 
 #### Reconcile
 
-`.spec.resources.metadata.labels[kapitan.razee.io/Reconcile]`
+`.spec.resources.metadata.labels[deploy.razee.io/Reconcile]`
 
 - DEFAULT: `true`
-  - A kapitan resource (parent) will clean up a resources it applies (child) when
-either the child is no longer in the parent resource definition or the parent is
-deleted.
+  - A razeedeploy resource (parent) will clean up a resources it applies
+(child) when either the child is no longer in the parent resource definition
+or the parent is deleted.
 - `false`
   - This behavior can be overridden when a child's resource definition has
-the label `kapitan.razee.io/Reconcile=false`.
+the label `deploy.razee.io/Reconcile=false`.
 
 #### Resource Update Mode
 
-`.spec.resources.metadata.labels[kapitan.razee.io/mode]`
+`.spec.resources.metadata.labels[deploy.razee.io/mode]`
 
 Kapitan resources default to merge patching children. This behavior can be
 overridden when a child's resource definition has the label
-`kapitan.razee.io/mode=<mode>`
+`deploy.razee.io/mode=<mode>`
 
 Mode options:
 
@@ -109,25 +109,25 @@ Mode options:
 
 ### Debug Individual Resource
 
-`.spec.resources.metadata.labels[kapitan.razee.io/debug]`
+`.spec.resources.metadata.labels[deploy.razee.io/debug]`
 
 Treats the live resource as EnsureExist. If any Kapitan component is enforcing
-the resource, and the label `kapitan.razee.io/debug: true` exists on the live
+the resource, and the label `deploy.razee.io/debug: true` exists on the live
 resource, it will treat the resource as ensure exist and not override any changes.
 This is useful for when you need to debug a live resource and dont want Kapitan
 overriding your changes. Note: this will only work when you add it to live resources.
 If you want to have the EnsureExist behavior, see [Resource Update Mode](#Resource-Update-Mode).
 
-- ie: `kubectl label ms <your-ms> kapitan.razee.io/debug=true`
+- ie: `kubectl label ms <your-ms> deploy.razee.io/debug=true`
 
 ### Lock Cluster Updates
 
 Prevents the controller from updating resources on the cluster. If this is the
-first time creating the `kapitan-config` ConfigMap, you must delete the running
+first time creating the `razeedeploy-config` ConfigMap, you must delete the running
 controller pods so the deployment can mount the ConfigMap as a volume. If the
-`kapitan-config` ConfigMap already exists, just add the pair `lock-cluster: true`.
+`razeedeploy-config` ConfigMap already exists, just add the pair `lock-cluster: true`.
 
 1. `export CONTROLLER_NAME=managedset-controller && export CONTROLLER_NAMESPACE=razee`
-1. `kubectl create cm kapitan-config -n $CONTROLLER_NAMESPACE --from-literal=lock-cluster=true`
+1. `kubectl create cm razeedeploy-config -n $CONTROLLER_NAMESPACE --from-literal=lock-cluster=true`
 1. `kubectl delete pods -n $CONTROLLER_NAMESPACE $(kubectl get pods -n $CONTROLLER_NAMESPACE
  | grep $CONTROLLER_NAME | awk '{print $1}' | paste -s -d ',' -)`

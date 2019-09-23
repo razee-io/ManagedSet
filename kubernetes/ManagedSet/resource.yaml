@@ -23,7 +23,7 @@ items:
             app: managedset-controller
           name: managedset-controller
         spec:
-          serviceAccountName: kapitan-sa
+          serviceAccountName: razeedeploy-sa
           containers:
           - image: "quay.io/razee/managedset:{{TRAVIS_TAG}}"
             resources:
@@ -45,11 +45,11 @@ items:
               failureThreshold: 1
             volumeMounts:
             - mountPath: /usr/src/app/config
-              name: kapitan-config
+              name: razeedeploy-config
           volumes:
-          - name: kapitan-config
+          - name: razeedeploy-config
             configMap:
-              name: kapitan-config
+              name: razeedeploy-config
               defaultMode: 420
               optional: true
 
@@ -57,10 +57,10 @@ items:
     kind: CustomResourceDefinition
     metadata:
       # name must match the spec fields below, and be in the form: <plural>.<group>
-      name: managedsets.kapitan.razee.io
+      name: managedsets.deploy.razee.io
     spec:
       # group name to use for REST API: /apis/<group>/<version>
-      group: kapitan.razee.io
+      group: deploy.razee.io
       # list of versions supported by this CustomResourceDefinition
       versions:
         - name: v1alpha1
