@@ -24,6 +24,9 @@ items:
           name: managedset-controller
         spec:
           serviceAccountName: kapitan-sa
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
           containers:
           - image: "quay.io/razee/managedset:{{TRAVIS_TAG}}"
             resources:
