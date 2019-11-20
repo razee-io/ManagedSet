@@ -19,7 +19,7 @@ kubectl apply -f "https://github.com/razee-io/ManagedSet/releases/latest/downloa
 
 ```yaml
 kind: ManagedSet
-apiVersion: deploy.razee.io/v1alpha1
+apiVersion: deploy.razee.io/v1alpha2
 metadata:
   name: <managed_set_name>
   namespace: <namespace>
