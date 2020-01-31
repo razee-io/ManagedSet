@@ -19,7 +19,7 @@ kubectl apply -f "https://github.com/razee-io/ManagedSet/releases/latest/downloa
 
 ```yaml
 kind: ManagedSet
-apiVersion: deploy.razee.io/v1alpha1
+apiVersion: deploy.razee.io/v1alpha2
 metadata:
   name: <managed_set_name>
   namespace: <namespace>
@@ -54,15 +54,27 @@ spec:
             - containerPort: 80
 ```
 
-### Required Fields
+### Spec
 
-- `.spec.resources`
-  - type: array
-  - items:
-    - type: object
-    - required: [kind, apiVersion, metadata]
+**Path:** `.spec`
 
-## Features
+**Description:** `spec` is required and **must** include section `resources`,
+where each resource is a Kubernetes object with `apiVersion`, `kind`, and `metadata`.
+
+**Schema:**
+
+```yaml
+spec:
+  type: object
+  required: [resources]
+  properties:
+    resources:
+      type: array
+      items:
+        type: object
+        x-kubernetes-embedded-resource: true
+        x-kubernetes-preserve-unknown-fields: true
+```
 
 ### Managed Resource Labels
 

@@ -77,6 +77,11 @@ items:
           # Each version can be enabled/disabled by Served flag.
           served: true
           # One and only one version must be marked as the storage version.
+          storage: false
+        - name: v1alpha2
+          # Each version can be enabled/disabled by Served flag.
+          served: true
+          # One and only one version must be marked as the storage version.
           storage: true
       # either Namespaced or Cluster
       scope: Namespaced
@@ -96,6 +101,8 @@ items:
       validation:
         # openAPIV3Schema is the schema for validating custom objects.
         openAPIV3Schema:
+          type: object
+          required: [spec]
           properties:
             spec:
               type: object
@@ -105,17 +112,5 @@ items:
                   type: array
                   items:
                     type: object
-                    required: [kind, apiVersion, metadata]
-                    properties:
-                      kind:
-                        type: string
-                      apiVersion:
-                        type: string
-                      metadata:
-                        type: object
-                        required: [name]
-                        properties:
-                          name:
-                            type: string
-                          namespace:
-                            type: string
+                    x-kubernetes-embedded-resource: true
+                    x-kubernetes-preserve-unknown-fields: true
