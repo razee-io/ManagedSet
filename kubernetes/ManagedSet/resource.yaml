@@ -64,13 +64,13 @@ items:
                 timeoutSeconds: 30
                 failureThreshold: 1
               volumeMounts:
-                - mountPath: /usr/src/app/config
+                - mountPath: /home/node/config
                   name: razeedeploy-config
           volumes:
             - name: razeedeploy-config
               configMap:
                 name: razeedeploy-config
-                defaultMode: 420
+                defaultMode: 400
                 optional: true
 
   - apiVersion: apiextensions.k8s.io/v1beta1
