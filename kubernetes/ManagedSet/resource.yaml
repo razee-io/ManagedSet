@@ -3,13 +3,19 @@ kind: List
 metadata:
   name: managedset-controller-list
   annotations:
-    version: "{{TRAVIS_COMMIT}}"
+    razee.io/git-repo: "{{{GIT_REMOTE}}}"
+    razee.io/commit-sha: "{{{TRAVIS_COMMIT}}}"
+    version: "{{{TRAVIS_COMMIT}}}"
 type: array
 items:
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
       name: managedset-controller
+      annotations:
+        razee.io/git-repo: "{{{GIT_REMOTE}}}"
+        razee.io/commit-sha: "{{{TRAVIS_COMMIT}}}"
+        version: "{{{TRAVIS_COMMIT}}}"
       labels:
         razee/watch-resource: "lite"
     spec:
@@ -27,8 +33,12 @@ items:
           name: managedset-controller
         spec:
           serviceAccountName: razeedeploy-sa
+          securityContext:
+            runAsUser: {{{NODE_USER_ID}}}
+            runAsGroup: {{{NODE_GROUP_ID}}}
+            fsGroup: {{{NODE_GROUP_ID}}}
           containers:
-            - image: "quay.io/razee/managedset:{{TRAVIS_TAG}}"
+            - image: "quay.io/razee/managedset:{{{TRAVIS_TAG}}}"
               resources:
                 limits:
                   memory: 200Mi
