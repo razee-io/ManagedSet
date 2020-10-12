@@ -42,7 +42,7 @@
     "@razee/kubernetes-util": "^0.1.6",
     "@razee/razeedeploy-core": "^0.10.1",
     "bunyan": "^1.8.14",
-    "object-path": "^0.11.4"
+    "object-path": "^0.11.5"
   },
   "devDependencies": {
     "chai": "^4.2.0",
