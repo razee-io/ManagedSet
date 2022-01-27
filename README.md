@@ -2,7 +2,7 @@
 
 Similar capabilties can be duplicated using [MustacheTemplate](https://github.com/razee-io/MustacheTemplate)
 
-# ManagedSet
+## ManagedSet
 
 [![Build Status](https://travis-ci.com/razee-io/ManagedSet.svg?branch=master)](https://travis-ci.com/razee-io/ManagedSet)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=razee-io/ManagedSet)](https://dependabot.com)
