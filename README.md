@@ -1,3 +1,7 @@
+# This repo will be deprecated and unsupported starting April 2022
+
+Similar capabilties can be duplicated using [MustacheTemplate](https://github.com/razee-io/MustacheTemplate)
+
 # ManagedSet
 
 [![Build Status](https://travis-ci.com/razee-io/ManagedSet.svg?branch=master)](https://travis-ci.com/razee-io/ManagedSet)
