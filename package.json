@@ -1,7 +1,7 @@
 {
-  "name": "ManagedSet",
+  "name": "@razee/managedset",
   "version": "0.0.0-dev",
-  "description": "Kapitan: component to manage kubernetes resources",
+  "description": "component to manage kubernetes resources",
   "main": "src/index.js",
   "keywords": [
     "kubernetes",
