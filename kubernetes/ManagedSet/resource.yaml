@@ -78,6 +78,8 @@ items:
     metadata:
       # name must match the spec fields below, and be in the form: <plural>.<group>
       name: managedsets.deploy.razee.io
+      labels:
+        deploy.razee.io/Reconcile: "false"
     spec:
       # group name to use for REST API: /apis/<group>/<version>
       group: deploy.razee.io
